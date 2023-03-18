@@ -208,7 +208,7 @@ ul {
 
 .tm-post-link-inner {
     overflow: hidden;
-    background: #F2EBAB;
+    background: #E9C46A;
 }
 
 .tm-post-link img {
@@ -242,7 +242,7 @@ ul {
 .tm-new-badge {
     top: 25px;
     right: -10px;
-    background-color: #00A693;
+    background-color: #E76F51;
     color: white;
     padding: 5px 20px;
 }
@@ -384,6 +384,7 @@ figcaption { line-height: 1.4; }
 .tm-mt-100 { margin-top: 100px; }
 .tm-mr-20 { margin-right: 20px; }
 .tm-color-primary, span.tm-color-primary { color: #099; }
+.tm-color-links {color: #264653;}
 a.tm-color-gray, .tm-color-gray { color: #999; }
 a.tm-color-gray:hover { color: #099; }
 .tm-bg-gray { background-color: #F3F4F5; }
