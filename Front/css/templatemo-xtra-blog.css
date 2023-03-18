@@ -437,6 +437,14 @@ a:hover figcaption { color: #056767; }
 .tm-contact-form label { font-size: 1.4rem; }
 .tm-contact-form .form-group { display: flex; }
 
+#more {display: none;}
+
+#myBtn {
+    border: none;
+    background: white;
+    color: #999;
+}
+
 @media (max-width: 1540px) {
     .tm-header { width: 320px; }
 
