@@ -437,13 +437,18 @@ a:hover figcaption { color: #056767; }
 .tm-contact-form label { font-size: 1.4rem; }
 .tm-contact-form .form-group { display: flex; }
 
-#more {display: none;}
-
-#myBtn {
-    border: none;
-    background: white;
-    color: #999;
+.morecontent span {
+    display: none;
 }
+.morelink {
+    display: block;
+}
+
+/*.moreBtn {*/
+/*    border: none;*/
+/*    background: white;*/
+/*    color: #999;*/
+/*}*/
 
 @media (max-width: 1540px) {
     .tm-header { width: 320px; }
@@ -494,7 +499,7 @@ a:hover figcaption { color: #056767; }
         position: fixed;
         left: 0;
         top: 0;
-        background-color: rgba(56, 204, 204, 0.75);
+        background-color: #00a693;
         color: white;
         padding: 10px 15px;
         transition: all 0.3s ease;
