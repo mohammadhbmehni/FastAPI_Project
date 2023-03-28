@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مولانا</title>
-    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+<!--    <link rel="stylesheet" href="fontawesome/css/all.min.css"> &lt;!&ndash; https://fontawesome.com/ &ndash;&gt;-->
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <!-- https://fonts.google.com/ -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/templatemo-script.js"></script>
+<!--    <link href="css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">-->
+<!--    <script src="js/jquery.min.js"></script>-->
+<!--    <script src="js/templatemo-script.js"></script>-->
+    <script src="{{ url_for('Front', path='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('Front', path='js/templatemo-script.js') }}"></script>
+    <link href="{{ url_for('Front', path='/fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('Front', path='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('Front', path='css/templatemo-xtra-blog.css') }}" rel="stylesheet">
+
     <!--
 
     TemplateMo 553 Xtra Blog
@@ -26,24 +32,24 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="tm-site-header">
-            <div class="mb-3 mx-auto tm-site-logo"><img class=" home-img" src="img/molana.jpg" width="100px"></div>
+            <div class="mb-3 mx-auto tm-site-logo"><img class=" home-img" src="{{ url_for('Front', path='img/molana.jpg') }}" width="100px"></div>
             <h1 class="text-center">مولانا</h1>
         </div>
         <nav class="tm-nav" id="tm-nav">
             <ul>
-                <li class="tm-nav-item active"><a href="index.html" class="tm-nav-link">
+                <li class="tm-nav-item active"><a href="http://127.0.0.1:8000/" class="tm-nav-link">
                     <i class="fas fa-home"></i>
                     خانه
                 </a></li>
-                <li class="tm-nav-item"><a href="post.html" class="tm-nav-link">
+                <li class="tm-nav-item"><a href="http://127.0.0.1:8000/post/de3c4d6f" class="tm-nav-link">
                     <i class="fas fa-pen"></i>
                     نوشتار
                 </a></li>
-                <li class="tm-nav-item"><a href="about.html" class="tm-nav-link">
+                <li class="tm-nav-item"><a href="http://127.0.0.1:8000/about" class="tm-nav-link">
                     <i class="fas fa-users"></i>
                     درباره‌ی نگارندگان
                 </a></li>
-                <li class="tm-nav-item"><a href="contact.html" class="tm-nav-link">
+                <li class="tm-nav-item"><a href="http://127.0.0.1:8000/contact" class="tm-nav-link">
                     <i class="far fa-comments"></i>
                     ارتباط با ما
                 </a></li>
