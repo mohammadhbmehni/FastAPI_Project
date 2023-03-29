@@ -54,3 +54,20 @@ $(function() {
         $(".tm-header").removeClass("show");
       });
 });
+
+// $(function (){
+//     $('#myForm').submit(function (evet){
+//         // event.preventDefault();
+//         const email = $('#email-input').val();
+//         const loginForm = `
+//         <form>
+//             <label for="email">ایمیل</label><br>
+//             <input type="email" id="login-email" name="email" value="${email}" readonly><br>
+//             <label for="password">رمز عبور</label><br>
+//             <input type="password" id="login-password" name="password" required>
+//             <button type="submit">ورود</button>
+//         </form>
+//         `;
+//         $('#myform').replaceWith(loginForm);
+//     });
+// });

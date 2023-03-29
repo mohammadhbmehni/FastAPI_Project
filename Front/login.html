@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود/ثبت‌نام</title>
+<!--    <link rel="stylesheet" href="fontawesome/css/all.min.css"> &lt;!&ndash; https://fontawesome.com/ &ndash;&gt;-->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<!--    <link href="css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">-->
+    <link href="{{ url_for('Front', path='/fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('Front', path='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('Front', path='css/templatemo-xtra-blog.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+</head>
+<body>
+<header class="tm-header" id="tm-header">
+    <div class="tm-header-wrapper">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+       <div class="tm-site-header">
+            <div class="mb-3 mx-auto tm-site-logo"><img class=" home-img" src="{{ url_for('Front', path='img/molana.jpg') }}" width="100px"></div>
+            <h1 class="text-center">مولانا</h1>
+        </div>
+                <nav class="tm-nav" id="tm-nav">
+                    <span>
+                <a href="http://127.0.0.1:8000/log-in" class="sign-in">
+                    <i class="fas fa-sign-in-alt" style="margin-left: 8px"></i>ورود | ثبت‌نام</a>
+            </span>
+            <ul>
+                <li class="tm-nav-item active"><a href="http://127.0.0.1:8000/" class="tm-nav-link">
+                    <i class="fas fa-home"></i>
+                    خانه
+                </a></li>
+                <li class="tm-nav-item"><a href="http://127.0.0.1:8000/post/de3c4d6f" class="tm-nav-link">
+                    <i class="fas fa-pen"></i>
+                    نوشتار
+                </a></li>
+                <li class="tm-nav-item"><a href="http://127.0.0.1:8000/about" class="tm-nav-link">
+                    <i class="fas fa-users"></i>
+                    درباره‌ی نگارندگان
+                </a></li>
+                <li class="tm-nav-item"><a href="http://127.0.0.1:8000/contact" class="tm-nav-link">
+                    <i class="far fa-comments"></i>
+                    ارتباط با ما
+                </a></li>
+            </ul>
+        </nav>
+        <div class="tm-mb-65">
+            <a href="https://facebook.com" class="tm-social-link">
+                <i class="fab fa-facebook tm-social-icon"></i>
+            </a>
+            <a href="https://twitter.com" class="tm-social-link">
+                <i class="fab fa-twitter tm-social-icon"></i>
+            </a>
+            <a href="https://instagram.com" class="tm-social-link">
+                <i class="fab fa-instagram tm-social-icon"></i>
+            </a>
+            <a href="https://linkedin.com" class="tm-social-link">
+                <i class="fab fa-linkedin tm-social-icon"></i>
+            </a>
+        </div>
+    </div>
+
+</header>
+<div class="container-fluid">
+    <main class="tm-main">
+        <!-- Search form -->
+        <div class="row tm-row">
+            <div class="col-12">
+                <form method="GET" class="form-inline tm-mb-80 tm-search-form">
+                    <input class="form-control tm-search-input" name="query" type="text" placeholder="جست و جو ..."
+                           aria-label="Search">
+                    <button class="tm-search-button" type="submit">
+                        <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row tm-row tm-mb-45">
+            <div class="col-12">
+                <hr class="tm-hr-primary tm-mb-55">
+            </div>
+        </div>
+    <div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">ورود</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">ثبت نام</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label  class="label">نام کاربری</label>
+					<input  type="text" class="input">
+				</div>
+				<div class="group">
+					<label  class="label">رمز عبور</label>
+					<input  type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="ورود">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot" class="foot-lnk">رمز عبور را فراموش کردم</a>
+				</div>
+			</div>
+			<div class="sign-up-htm">
+				<div class="group">
+					<label for="user" class="label">نام کاربری</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label  class="label">رمز عبور</label>
+					<input  type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<label  class="label">تکرار رمز</label>
+					<input  type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">ایمیل</label>
+					<input id="pass" type="text" class="input">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="ثبت نام">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a for="tab-1">حساب کاربری دارید؟</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-from fastapi import FastAPI,Request
+from fastapi import FastAPI,Request,HTTPException
 import models as db
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
@@ -12,6 +12,19 @@ db.Base.metadata.create_all(db.engine)
 
 app = FastAPI()
 app.mount("/Front/css", StaticFiles(directory="Front"), name="Front")
+
+curren_user = {
+    "logged_in" : False,
+    "user_id": "",
+    "name" : "",
+    "current_post_looking" : ""
+}
+
+
+class Register(BaseModel):
+    name : str
+    email : str
+    password: str
 
 @app.get("/")
 def home(request : Request):
@@ -84,6 +97,7 @@ def show_post(request : Request, post_id):
 
     return templates.TemplateResponse("post.html", {"request":request,"resault":resault})
 
+
 @app.get("/about")
 def about(request: Request):
     return templates.TemplateResponse("about.html", {"request":request})
@@ -92,3 +106,26 @@ def about(request: Request):
 @app.get("/contact")
 def contact(request: Request):
     return templates.TemplateResponse("contact.html", {"request":request})
+
+
+@app.post("/register")
+def register(register_req : Register):
+    our_user = db.session.query(db.User).all()
+    for user in our_user:
+        if user.name == register_req.name or user.email == register_req.email:
+            raise HTTPException(detail="user already exists",status_code=409)
+    if len(register_req.password) <8 :
+        raise HTTPException(status_code=401,detail="password is too short")
+    if len(register_req.name) < 3 :
+        raise HTTPException(status_code=401,detail="username is too short")
+    register_response = {
+        "is_registered":"ok"
+    }
+    new_user = db.User(register_req.name,register_req.email,register_req.password)
+    db.session.add(new_user)
+    db.session.commit()
+    return register_response
+
+@app.get("/log-in")
+def login_page(request:Request):
+    return templates.TemplateResponse("login.html", {"request":request})

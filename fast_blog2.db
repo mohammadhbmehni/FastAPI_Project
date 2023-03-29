@@ -1,0 +1,164 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.6
+-- Dumped by pg_dump version 10.6
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.comments (
+    comment_id character varying(50) NOT NULL,
+    post_id character varying(50),
+    user_id character varying(50),
+    text character varying,
+    "time" date
+);
+
+
+ALTER TABLE public.comments OWNER TO postgres;
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.posts (
+    post_id character varying(50) NOT NULL,
+    poster_id character varying(50),
+    title character varying(100),
+    text character varying,
+    summary character varying(250),
+    "time" date
+);
+
+
+ALTER TABLE public.posts OWNER TO postgres;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    user_id character varying(25) NOT NULL,
+    name character varying(50),
+    email character varying(150),
+    password character varying(250)
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.comments (comment_id, post_id, user_id, text, "time") FROM stdin;
+a2d733ba	de3c4d6f	0a4b7133	cheghad zeshte	2023-03-28
+580b8c58	9b50a474	d845379c	بسیار عالی به راستی که مولانا قبل از شاعری ماهر،عارفی والا بود. احسنت	2023-03-29
+f32c4ef4	9b50a474	d845379c	اکستنشن تهرانی با 1 قرن سابقه	2023-03-29
+\.
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.posts (post_id, poster_id, title, text, summary, "time") FROM stdin;
+de3c4d6f	0a4b7133	salam	injaneb text ast	injaneb text ast	2023-03-28
+9b50a474	0a4b7133	یکی میگفت که مولانا سخن نمی‌فرماید	\n\n                    یکی میگفت که مولانا سخن نمی فرماید گفتم آخر این شخص را نزد من خیال من آورد اینخیال من\n                    با وی سخن نگفت که چونی یا چگونهٔ بی سخن خیال او را اینجا جذب کرد اگر حقیقت من\n                    او را بی سخن جذب کند و جای دیگر برد چه عجب باشد.سخن سایهٔ حقیقت است\n                    و فرع حقیقت چون سایه جذب کرد حقیقت بطریق اولی سخن بهانه است آدمی رابا آدمی آن جزو مناسب\n                    جذب میکند نه سخن بلک اگر صدهزار معجزه و بیان و کرامات ببیند چون درو از آن نبی و\n                    یا ولی جز وی نباشد مناسب سود ندارد آن جزوست که او را در جوش و بی قرار میدارد\n                    در کَهْ از کهربا اگر جزوی نباشد هرگز سوی کهربا نرود آن جنسیت میان ایشان خفیست در نظر نمیآید\n                    آدمی را خیال هر چیز با آن چیز میبرد خیال باغ بباغ میبرد و خیال دکان بدکان اما درین\n                    خیالات تزویر پنهانست نمیبینی که فلان جایگاه ميروی پشیمان میشوی و میگویی پنداشتم\n                    که خير باشد آن خود نبود پس این خیالات بر مثال چادرند و در چادر کسی پنهانست هرگاه که خیالات\n                    از میان برخیزند و حقایق روی نمایند بی چادر خیال قیامت باشد آنجا که حال چنين شود پشیمانی نماند\n                    هر حقیقت که ترا جذب میکند چیز دیگر غير آن نباشد همان حقیقت باشد که ترا جذب کرد یَوْمَ تُبْلَي الْسَّرَائِرُ\n                    چه جای اینست که میگوییم در حقیقت کشنده یکیست اما متعدد می نماید نمیبینی که آدمی را صد چیز آرزوست\n                    گوناگون میگوید تُتماج میخواهم بورک خواهم حلو خواهم قلیه خواهم میوه خواهم خرما خواهم\n                    این اعدادمینماید و بگفت میآورد اما اصلش یکیست اصلش گرسنگیست و آن یکیست نمیبینی چون از یک چیز سير شد\n                    میگوید هیچ ازینهانمیباید پس معلوم شد که ده و صد نبود بلک یک بود.وَمَا جَعَلْنَا عِدَّتَهُمْ اِلاّ فِتْنَةً کدام صد\n                    کدام پنجاه کدام شصت قومی بی دست و بی پا و بی هوش و بی جان چون طلسم و ژیوه و سیماب میجنبند\n                \n	\n\n                    یکی میگفت که مولانا سخن نمی فرماید گفتم آخر این شخص را نزد من خیال من آورد اینخیال من\n                    با وی سخن نگفت که چونی یا چگونهٔ بی سخن خیال او را اینجا جذب کرد اگر حقیقت من\n                    او را بی سخن جذب کند و ج	2023-03-29
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (user_id, name, email, password) FROM stdin;
+0a4b7133	mmd	mmd@gmail.com	1234
+d845379c	کیبورد خشابی	keyboardkheshabi@gmail.com	betoche
+49b3eb16	houtan	houtantv@gmail.com	L123456a
+\.
+
+
+--
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (comment_id);
+
+
+--
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (post_id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
+
+
+--
+-- Name: comments comments_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_post_id_fkey FOREIGN KEY (post_id) REFERENCES public.posts(post_id);
+
+
+--
+-- Name: comments comments_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: posts posts_poster_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_poster_id_fkey FOREIGN KEY (poster_id) REFERENCES public.users(user_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
