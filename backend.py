@@ -47,32 +47,40 @@ def home(request : Request):
 @app.get("/post/{post_id}")
 def show_post(request : Request, post_id):
     our_post = db.session.query(db.Post).filter(db.Post.post_id == post_id).one()
+    our_user = db.session.query(db.User).filter(db.User.user_id == our_post.poster_id).one()
     our_comments = db.session.query(db.Comments).filter(db.Comments.post_id == our_post.post_id)
-    comment_schema = {
-        "comment_id" : "",
-        "user_id" : "",
-        "post_id" : "",
-        "text" : "",
-        "time" : ""
-    }
+
     resault = {
         "post": {
             "post_id": our_post.post_id,
-            "author": our_post.poster_id,
+            "author": our_user.name,
             "title": our_post.title,
             "text": our_post.text,
             "summary": our_post.summary,
             "time": our_post.time
         },
-        "comments" : []
+        "comments" : [],
+        "other_posts": []
     }
     for i in our_comments:
-        comment_schema["comment_id"] = i.comment_id
-        comment_schema["user_id"] = i.user_id
-        comment_schema["post_id"] = i.post_id
-        comment_schema["text"] = i.text
-        comment_schema["time"] = i.time
+        our_user = db.session.query(db.User).filter(db.User.user_id == i.user_id).one()
+        comment_schema = {"comment_id": i.comment_id, "user_id": i.user_id,"user_name" :our_user.name,"post_id": i.post_id, "text": i.text,
+                          "time": i.time}
         resault["comments"].append(comment_schema)
+    other_posts = db.session.query(db.Post).filter(db.Post.post_id != post_id).limit(3).all()
+    for post in other_posts:
+        our_comments = db.session.query(db.Comments).filter(db.Comments.post_id == post.post_id).all()
+        our_user = db.session.query(db.User).filter(db.User.user_id == post.poster_id).one()
+        other_post = {
+            "post_id": post.post_id,
+            "author": our_user.name,
+            "title": post.title,
+            "text": post.text,
+            "summary": post.summary,
+            "time": post.time,
+            "comments_count": len(our_comments)
+        }
+        resault["other_posts"].append(other_post)
 
     return templates.TemplateResponse("post.html", {"request":request,"resault":resault})
 
