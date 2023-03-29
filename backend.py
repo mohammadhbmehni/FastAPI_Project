@@ -16,25 +16,30 @@ app.mount("/Front/css", StaticFiles(directory="Front"), name="Front")
 @app.get("/")
 def home(request : Request):
     our_posts = db.session.query(db.Post).all()
-    post = {
-        "post_id" : "",
-        "author" : "",
-        "title": "",
-        "text": "",
-        "summary" : "",
-        "time" : ""
-    }
+
     resault = {
         "number_of_posts" : 0,
         "posts" : []
     }
     for i in our_posts:
+        post = {
+            "post_id": "",
+            "author": "",
+            "title": "",
+            "text": "",
+            "summary": "",
+            "time": "",
+            "comments_count": 0
+        }
+        our_user = db.session.query(db.User).filter(db.User.user_id == i.poster_id).one()
+        our_comments = db.session.query(db.Comments).filter(db.Comments.post_id == i.post_id).all()
         post["post_id"] = i.post_id
-        post["author"] = i.poster_id
+        post["author"] = our_user.name
         post["title"] = i.title
         post["text"] = i.text
         post["summary"] = i.summary
         post["time"] = i.time
+        post["comments_count"] = len(our_comments)
         resault["posts"].append(post)
     resault["number_of_posts"] = len(our_posts)
     return templates.TemplateResponse("index.html", {"request":request,"resault":resault})
