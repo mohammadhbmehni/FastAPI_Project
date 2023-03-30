@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-templates = Jinja2Templates(directory=r"C:\Users\User\Desktop\pycharm maktab\Front")
+templates = Jinja2Templates(directory=r".\Front")
 
 
 db.Base.metadata.create_all(db.engine)
@@ -25,6 +25,8 @@ class Register(BaseModel):
     name : str
     email : str
     password: str
+    second_password : str
+
 
 @app.get("/")
 def home(request : Request):
@@ -114,6 +116,8 @@ def register(register_req : Register):
     for user in our_user:
         if user.name == register_req.name or user.email == register_req.email:
             raise HTTPException(detail="user already exists",status_code=409)
+    if register_req.password != register_req.second_password:
+        raise HTTPException(status_code=401,detail="passwords didn't matched")
     if len(register_req.password) <8 :
         raise HTTPException(status_code=401,detail="password is too short")
     if len(register_req.name) < 3 :
@@ -125,6 +129,7 @@ def register(register_req : Register):
     db.session.add(new_user)
     db.session.commit()
     return register_response
+
 
 @app.get("/log-in")
 def login_page(request:Request):
