@@ -33,6 +33,13 @@ class Login(BaseModel):
     password: str
 
 
+class Contact(BaseModel):
+    name: str
+    email: str
+    massage: str
+    subject: str
+
+
 @app.get("/")
 def home(request: Request):
     our_posts = db.session.query(db.Post).all()
@@ -119,7 +126,6 @@ def contact(request: Request):
 
 @app.post("/register")
 def register(register_req: Register):
-
     our_user = db.session.query(db.User).filter(db.User.name == register_req.name)
     duplicate = 0
     for user in our_user:
@@ -148,16 +154,11 @@ def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 
-from starlette.datastructures import URL
-
-
 @app.post("/log-in")
 def login_post(request: Request, request_log: Login):
     our_user = db.session.query(db.User).filter(db.User.name == request_log.name)
-    founded_users = 0
     password_match = 0
     for user in our_user:
-        founded_users = 1
         if request_log.password == user.password:
             password_match = 1
     if password_match == 1:
@@ -169,3 +170,14 @@ def login_post(request: Request, request_log: Login):
 @app.get("/dashboard")
 def dashboard(request: Request):
     return templates.TemplateResponse("dashboard.html", {"request": request})
+
+
+@app.get("/new-post")
+def new_post():
+    return
+
+
+@app.post("/contact")
+def contact1(request_contact: Contact):
+    print(request_contact.name)
+    return request_contact

@@ -13,6 +13,7 @@
     <link href="{{ url_for('Front', path='/fontawesome/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('Front', path='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('Front', path='css/templatemo-xtra-blog.css') }}" rel="stylesheet">
+    <script src="{{ url_for('Front', path='/js/js.js') }}"></script>
 
 
 
@@ -86,7 +87,7 @@
         <div class="row tm-row tm-mb-45">
             <div class="col-12">
                 <hr class="tm-hr-primary tm-mb-55">
-                <!--<div class="gmap_canvas"> <!-- Google Map ->
+                <!--<div class="gmap_canvas">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5742.308849926564!2d15.379530729143823!3d43.97685592270901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4761e1d8629d448f%3A0xcf8125cc0a2bb6da!2sPoorva%20jangir%20House!5e0!3m2!1sen!2s!4v1678984363705!5m2!1sen!2s"
                             width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -98,17 +99,17 @@
                 <h2 class="tm-color-primary tm-post-title tm-mb-60">ارتباط با ما</h2>
             </div>
             <div class="col-lg-7 tm-contact-left">
-                <form method="POST" action="" class="mb-5 ml-auto mr-0 tm-contact-form">
+                <form method="POST" onclick="contact()" class="mb-5 ml-auto mr-0 tm-contact-form" id="contact">
                     <div class="form-group row mb-4">
-                        <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">نام</label>
+                        <label for="esm" class="col-sm-3 col-form-label text-right tm-color-primary">نام</label>
                         <div class="col-sm-9">
-                            <input class="form-control mr-0 ml-auto" name="name" id="name" type="text" required>
+                            <input class="form-control mr-0 ml-auto" name="esm" id="esm" type="text" required>
                         </div>
                     </div>
                     <div class="form-group row mb-4">
                         <label for="email" class="col-sm-3 col-form-label text-right tm-color-primary">ایمیل</label>
                         <div class="col-sm-9">
-                            <input class="form-control mr-0 ml-auto" name="email" id="email" type="email" required>
+                            <input class="form-control mr-0 ml-auto" name="email2" id="email2" type="email" required>
                         </div>
                     </div>
                     <div class="form-group row mb-4">
